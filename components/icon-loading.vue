@@ -1,7 +1,8 @@
 <template>
 	<view>
-		<view class="loading_background" v-if="value">
-			
+		<view class="loading_background u-flex u-row-center" style="flex-direction: column;" v-if="value">
+			<u-image src="@/static/loading/loading.gif" width="200" mode="widthFix"></u-image>
+			<view class="u-text-center loading_text">loading...</view>
 		</view>
 	</view>
 </template>
@@ -43,6 +44,9 @@
 		left: 0;
 		bottom: 0;
 		background-color: #FFFFFF;
-		
+	}
+	.loading_text{
+		line-height:60rpx; text-align:center; font-size:22rpx; margin-top:28rpx;
+		color: #F1207B;
 	}
 </style>

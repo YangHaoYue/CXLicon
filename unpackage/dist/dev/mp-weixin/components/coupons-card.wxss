@@ -1,0 +1,25 @@
+
+.base-coupons.data-v-3e10928b {
+	width: 700rpx;
+	height: 200rpx;
+	position: relative;
+	background: radial-gradient(circle at right top, transparent 10rpx,  #fff 0) top left / 200rpx 51% no-repeat,
+	  radial-gradient(circle at right bottom, transparent 10rpx,  #fff 0) bottom left /200rpx 51% no-repeat,
+	  radial-gradient(circle at left top, transparent 10rpx, #fff 0) top right /500rpx 51% no-repeat,
+	  radial-gradient(circle at left bottom, transparent 10rpx, #fff 0) bottom right /500rpx 51% no-repeat;
+	-webkit-filter: drop-shadow(3rpx 3rpx 3rpx rgba(0,0,0,.3));
+	        filter: drop-shadow(3rpx 3rpx 3rpx rgba(0,0,0,.3));
+	border-radius: 20rpx;
+	margin: 20rpx 25rpx;
+}
+.base-coupons.data-v-3e10928b::before {
+  content: '';
+  height: 130rpx;
+  border: 1rpx dashed #EEEEEE;
+  position: absolute;
+  left: 198rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+

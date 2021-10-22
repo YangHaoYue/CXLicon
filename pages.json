@@ -25,11 +25,29 @@
 				"navigationBarTitleText": ""
 			}
 		}
+        ,{
+            "path" : "pages/mine/coupons/coupons",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的优惠卷",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/mine/coupons/detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "优惠卷详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uView",
-		"navigationBarBackgroundColor": "#F8F8F8",
+		"navigationBarBackgroundColor": "#FFFFFF",
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {

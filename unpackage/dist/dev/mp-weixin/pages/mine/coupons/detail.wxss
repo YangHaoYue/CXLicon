@@ -1,0 +1,9 @@
+
+.card.data-v-48ae5266{
+	width: 700rpx;
+	height: 790rpx;
+	border-radius: 20rpx;
+	margin: 30rpx 25rpx;
+	padding: 60rpx 0 0;
+}
+

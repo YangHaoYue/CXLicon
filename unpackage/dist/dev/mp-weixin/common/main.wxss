@@ -7786,4 +7786,7 @@ u-dropdown {
 
 
 /*每个页面公共css */
+.body-color-gray {
+  background-color: #F6F7FB;
+}
 

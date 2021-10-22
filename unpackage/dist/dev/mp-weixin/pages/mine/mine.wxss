@@ -1,0 +1,10 @@
+
+.card.data-v-dcbcfe34{
+	width: 710rpx;
+	height: 168rpx;
+	border-radius: 20rpx;
+	box-shadow: 0px 1px 4px 3px rgba(188, 188, 188, 0.09);
+	margin: 20rpx;
+	padding: 0 40rpx;
+}
+

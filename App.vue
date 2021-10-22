@@ -27,4 +27,7 @@
 	@import "./colorui/main.css";
 	@import "./colorui/animation.css";
 	@import "./colorui/icon.css";
+	.body-color-gray{
+		background-color: #F6F7FB;
+	}
 </style>

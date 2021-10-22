@@ -12,4 +12,11 @@
   bottom: 0;
   background-color: #FFFFFF;
 }
+.loading_text.data-v-588eaea3 {
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 22rpx;
+  margin-top: 28rpx;
+  color: #F1207B;
+}
 

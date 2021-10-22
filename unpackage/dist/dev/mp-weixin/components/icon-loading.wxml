@@ -1,1 +1,1 @@
-<view class="data-v-588eaea3"><block wx:if="{{value}}"><view class="loading_background data-v-588eaea3"></view></block></view>
+<view class="data-v-588eaea3"><block wx:if="{{value}}"><view class="loading_background u-flex u-row-center data-v-588eaea3" style="flex-direction:column;"><u-image vue-id="8d70b27a-1" src="/static/loading/loading.gif" width="200" mode="widthFix" class="data-v-588eaea3" bind:__l="__l"></u-image><view class="u-text-center loading_text data-v-588eaea3">loading...</view></view></block></view>

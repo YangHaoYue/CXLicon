@@ -47,7 +47,7 @@
 		onLoad() {
 			setTimeout(()=>{
 				this.showLoading = false
-			},1500)
+			},9500)
 		},
 		computed: {
 			...mapState({
