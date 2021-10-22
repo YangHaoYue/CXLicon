@@ -1,0 +1,1 @@
+<view class="data-v-588eaea3"><block wx:if="{{value}}"><view class="loading_background data-v-588eaea3"></view></block></view>

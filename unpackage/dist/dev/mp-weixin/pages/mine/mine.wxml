@@ -1,0 +1,1 @@
+<view><view class="u-page"></view><u-tabbar vue-id="bae1c640-1" list="{{list}}" mid-button="{{true}}" data-event-opts="{{[['^change',[['change']]]]}}" bind:change="__e" bind:__l="__l"></u-tabbar></view>
