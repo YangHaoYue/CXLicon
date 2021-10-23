@@ -1,3 +1,4 @@
+import route from "../../uview-ui/libs/function/route.js"
 export default {
 	state:{
 		list: [{
@@ -23,16 +24,23 @@ export default {
 				pagePath: "/pages/mine/mine"
 			},
 		],
-		current: 0
+		current: 0,
+		iconUrl:''
 	},
 	actions:{
-		changeTabbar({commit},currentIndex){
-			commit('changeTabbar',currentIndex)
+		currentChange({commit},currentIndex){
+			commit('currentChange',currentIndex)
 		}
 	},
 	mutations:{
-		changeTabbar(state,currentIndex){
+		setIconUrl(state,iconUrl){
+			state.iconUrl = iconUrl;
+		},
+		currentChange(state,currentIndex){
 			state.current = currentIndex;
+			if(currentIndex === 1){
+				route('/pages/questionare/questionare')
+			}
 		}
 	}
 }

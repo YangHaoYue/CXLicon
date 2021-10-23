@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uLink: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-link/u-link */ "uview-ui/components/u-link/u-link").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-link/u-link.vue */ 144))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-link/u-link */ "uview-ui/components/u-link/u-link").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-link/u-link.vue */ 152))
     }
   }
 } catch (e) {

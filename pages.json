@@ -43,6 +43,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/questionare/questionare",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "调查问卷",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

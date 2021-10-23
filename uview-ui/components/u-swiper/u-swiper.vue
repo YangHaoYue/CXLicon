@@ -23,7 +23,7 @@
 				</view>
 			</swiper-item>
 		</swiper>
-		<view class="u-swiper-indicator" :style="{
+		<view class="u-swiper-indicator" v-if="showIndicator" :style="{
 				top: indicatorPos == 'topLeft' || indicatorPos == 'topCenter' || indicatorPos == 'topRight' ? '12rpx' : 'auto',
 				bottom: indicatorPos == 'bottomLeft' || indicatorPos == 'bottomCenter' || indicatorPos == 'bottomRight' ? '102rpx' : 'auto',
 				justifyContent: justifyContent,
@@ -116,6 +116,11 @@
 			indicatorPos: {
 				type: String,
 				default: 'bottomCenter'
+			},
+			//是否显示指示器
+			showIndicator:{
+				type:Boolean,
+				default:true
 			},
 			// 是否开启缩放效果
 			effect3d: {

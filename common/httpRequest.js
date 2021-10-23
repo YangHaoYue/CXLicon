@@ -5,11 +5,11 @@
 const tui = {
 	//接口地址
 	interfaceUrl: function() {
-		return 'http://wx.muyushepin.com'
+		return 'http://icon.0831.run/api/v1/'
 	},
 	//资源地址
 	resourceUrl:function(){
-		return 'https://oss.muyushepin.com/'
+		return 'http://icon.0831.run/'
 	},
 	toast: function(text, duration, success) {
 		uni.showToast({
@@ -72,7 +72,7 @@ const tui = {
 	 *  true: 隐藏
 	 *  false:显示
 	 */
-	request: function(url, method, postData, isDelay, isForm, hideLoading) {
+	request: function(url, method, postData, isDelay, isForm, hideLoading=true) {
 		//接口请求
 		let loadding = false;
 		tui.delayed && uni.hideLoading();

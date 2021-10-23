@@ -1,5 +1,6 @@
 <template>
 	<view class="body-color-gray":style="'min-height:'+$u.sys().windowHeight+'px;'">
+		<u-gap/>
 		<coupons-card>
 			<view class="text-bold u-text-center" style="font-size: 40rpx;">满一百减59</view>
 		</coupons-card>
@@ -10,8 +11,19 @@
 			<u-image src="" width="350" height="350" class="u-m-t-30"/>
 		</view>
 		
-		<view class="u-flex">
-			
+		<view class="detail">
+			<view class="u-flex">
+				<image src="/static/mine/store.png" mode="widthFix"/>
+				<view class="u-font-26 text-gray u-m-l-10">适用门店：</view>
+			</view>
+			<view class="u-flex">
+				<image src="/static/mine/lock.png" mode="widthFix"/>
+				<view class="u-font-26 text-gray u-m-l-10">适用门店：</view>
+			</view>
+			<view class="u-flex">
+				<image src="/static/mine/notice.png" mode="widthFix"/>
+				<view class="u-font-26 text-gray u-m-l-10">适用门店：</view>
+			</view>
 		</view>
 	</view>
 </template>
@@ -33,12 +45,19 @@
 	}
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 	.card{
 		width: 700rpx;
 		height: 790rpx;
 		border-radius: 20rpx;
 		margin: 30rpx 25rpx;
 		padding: 60rpx 0 0;
+	}
+	.detail{
+		padding: 30rpx;
+		line-height: 2.2;
+		image{
+			width: 18rpx;
+		}
 	}
 </style>

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "优惠卷详情",
   "enablePullDownRefresh": false,
   "usingComponents": {
+    "u-gap": "/uview-ui/components/u-gap/u-gap",
     "u-image": "/uview-ui/components/u-image/u-image",
     "coupons-card": "/components/coupons-card"
   }

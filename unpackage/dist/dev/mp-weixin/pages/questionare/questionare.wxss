@@ -1,0 +1,10 @@
+
+.textarea{
+	background-color: #FFEEF7;
+	width: 650rpx;
+	height: 300rpx;
+	border-radius: 30rpx;
+	margin: 20rpx 25rpx;
+	padding: 30rpx;
+}
+
