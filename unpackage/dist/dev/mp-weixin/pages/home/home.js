@@ -125,6 +125,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   var g0 = _vm.http.resourceUrl()
+  var g1 = _vm.http.resourceUrl()
 
   if (!_vm._isMounted) {
     _vm.e0 = function($event) {
@@ -136,7 +137,8 @@ var render = function() {
     {},
     {
       $root: {
-        g0: g0
+        g0: g0,
+        g1: g1
       }
     }
   )
@@ -216,6 +218,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
 var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   onLoad: function onLoad() {
@@ -230,7 +237,8 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
   data: function data() {
     return {
       showLoading: true,
-      imgList: [],
+      banners: [],
+      package: '',
       address: '',
       navs: [],
       activities: [] };
@@ -246,10 +254,11 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
                   _this.http.get('index/index'));case 2:_yield$_this$http$get = _context.sent;code = _yield$_this$http$get.code;data = _yield$_this$http$get.data;msg = _yield$_this$http$get.msg;if (!(
                 code != 1000)) {_context.next = 8;break;}return _context.abrupt("return", _this.$u.toast(msg));case 8:
                 _this.navs = data.navs;
+                _this.package = data.package;
                 _this.address = data.address;
-                _this.imgList = data.banners.map(function (v) {return _this.__format(v);});
+                _this.banners = data.banners.map(function (v) {return _this.__format(v);});
                 _this.activities = data.activities.map(function (v) {return _this.__format(v);});
-                _this.$store.commit('setIconUrl', data.icon_url);case 13:case "end":return _context.stop();}}}, _callee);}))();
+                _this.$store.commit('setIconUrl', data.icon_url);case 14:case "end":return _context.stop();}}}, _callee);}))();
     },
     getMineMenu: function getMineMenu() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this2$http$ge, code, data, msg;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
                   _this2.http.get('user/getMenu'));case 2:_yield$_this2$http$ge = _context2.sent;code = _yield$_this2$http$ge.code;data = _yield$_this2$http$ge.data;msg = _yield$_this2$http$ge.msg;if (!(
@@ -278,6 +287,9 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
         this.$u.route("/pages/home/webView/webView?url=".concat(item.link));
       }
 
+    },
+    changSwipers: function changSwipers(e) {
+      this.route(this.banners[e]);
     } }) };exports.default = _default;
 
 /***/ })

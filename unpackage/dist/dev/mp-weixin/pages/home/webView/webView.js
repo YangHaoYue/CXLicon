@@ -136,8 +136,12 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
-  onLoad: function onLoad(url) {
-    this.url = e.url;
+  onLoad: function onLoad(e) {
+    if (!e.url) {
+      this.url = this.$store.state.tabbars.iconUrl;
+    } else {
+      this.url = e.url;
+    }
   },
   data: function data() {
     return {

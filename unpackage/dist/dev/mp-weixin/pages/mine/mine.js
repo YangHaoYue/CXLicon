@@ -160,10 +160,14 @@ var render = function() {
     }
 
     _vm.e3 = function($event) {
-      _vm.showModal = true
+      return _vm.$u.route("/pages/mine/coupons/coupons")
     }
 
     _vm.e4 = function($event) {
+      _vm.showModal = true
+    }
+
+    _vm.e5 = function($event) {
       _vm.showModal = false
     }
   }
@@ -210,6 +214,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
 
 
 

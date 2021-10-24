@@ -31,10 +31,11 @@
 			</view>
 			
 			<u-cell-group>
-				<u-cell-item  title="我的订单">
-					<u-icon slot="icon" size="32" name="file-text"></u-icon>
+				<u-cell-item  title="我的订单" @click="$u.route('/pages/mine/coupons/coupons')">
+					<u-icon class="u-m-r-10" slot="icon" size="32" name="file-text"></u-icon>
 				</u-cell-item>
 				<u-cell-item icon="phone" title="联系客服" @click="showModal = true"></u-cell-item>
+				
 				<block v-for="(item,index) in menus" :key="item.id">
 					<u-cell-item  :title="item.title">
 						<u-image class="u-m-r-10" slot="icon" :src="item.image&&http.resourceUrl + item.image" width="32" height="32"/>
@@ -43,9 +44,10 @@
 			</u-cell-group>
 			
 			<u-popup v-model="showModal" mode="center" border-radius="15" width="600" height="600" mask-close-able>
-				<view class="u-flex u-text-center" style="flex-direction: column;height: 100%;">
-					<view>客户热线：{{service_tel}}</view>
-					<view>客户微信：{{service_wx}}</view>
+				<view class="u-flex u-text-center u-p-t-40" style="flex-direction: column;height: 100%;">
+					<u-image src="@/static/server.jpg" width="440" mode="widthFix" />
+					<view class="u-m-t-20 u-m-b-10 u-font-28">客户热线：{{service_tel}}</view>
+					<view class="u-m-t-10 u-m-b-20 u-font-28">客户微信：{{service_wx}}</view>
 				</view>
 				<view class="u-flex u-row-center" style="position: fixed;bottom: 150rpx;width: 600rpx;" @click="showModal = false">
 					<u-icon name="close-circle" size="50" color="#fff"/>

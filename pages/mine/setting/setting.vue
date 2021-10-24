@@ -30,7 +30,7 @@
 			</view>
 		</view>
 		
-		<u-picker v-model="showTime" mode="time" :params="params" />
+		<u-picker v-model="showTime" mode="time" :params="params" confirm-color="#ED1E79" @confirm="change" />
 		
 		
 		<u-button :custom-style="customStyle" type="error" shape="circle" @click="setUserInfo">提交</u-button>
@@ -38,13 +38,14 @@
 </template>
 
 <script>
+	import { mapActions } from 'vuex'
 	export default {
 		data() {
 			return {
-				name:'',
-				sex: '男',
-				birthday:'',
-				address:'',
+				name:this.$store.state.userInfo.userInfo.name,
+				sex: this.$store.state.userInfo.userInfo.sex === 0?'男':'女',
+				birthday:this.$store.state.userInfo.userInfo.birthday,
+				address:this.$store.state.userInfo.userInfo.address,
 				list: [{name: '男'},{name: '女'}],
 				showTime:false,
 				params: {
@@ -65,11 +66,24 @@
 			}
 		},
 		methods: {
+			...mapActions([
+				'getUserInfo'
+			]),
+			async getUser(){
+				let {data,code} = await this.http.get('user/info')
+				if(code === 1000){
+					this.getUserInfo(data)
+				}
+			},
 			async setUserInfo(){
-				let {code,msg} = await this.http.post('user/setUserInfo',{name:this.name,sex:this.sex,birthday:this.birthday,address:this.address})
+				let {code,msg} = await this.http.post('user/setUserInfo',{name:this.name,sex:this.sex==='男'?0:1,birthday:this.birthday,address:this.address})
 				this.$u.toast(msg)
 				if(code != 1000) return 
+				this.getUser()
 				setTimeout(()=>uni.navigateBack({delta:1}),1500)
+			},
+			change(e){
+				this.birthday = `${e.year}-${e.month}-${e.day}`
 			}
 		}
 	}

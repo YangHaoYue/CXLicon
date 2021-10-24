@@ -1,8 +1,10 @@
 <template>
 	<view>
 		<view v-html="data"></view>
-		
-		<u-button :custom-style="customStyle" type="error" shape="circle" @click="pay">立即购买</u-button>
+		<u-gap height="120" />
+		<view class="bottom-btn">
+			<u-button :custom-style="customStyle" type="error" shape="circle" @click="pay">立即购买</u-button>
+		</view>
 	</view>
 </template>
 
@@ -17,10 +19,6 @@
 				data:'',
 				customStyle:{
 					backgroundColor:"#ED1E79",
-					position:'fixed',
-					bottom:"30rpx",
-					left:'10rpx',
-					right:'10rpx'
 				}
 			}
 		},
@@ -28,7 +26,7 @@
 			async getDetail(){
 				let {code,data,msg} = await this.http.get('package/getDetail')
 				if(code === 1000){
-					this.data = data.content;
+					this.data = data.content.replace(/\<img/gi,'<img style="width:100% ! important;" ' );
 					this.id = data.id
 				}
 			},
@@ -57,6 +55,16 @@
 	}
 </script>
 
-<style>
-
+<style scoped>
+	.rich-img {
+		width: 100% ;
+		height: auto ;
+	}
+	.bottom-btn{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		padding: 20rpx;
+	}
 </style>

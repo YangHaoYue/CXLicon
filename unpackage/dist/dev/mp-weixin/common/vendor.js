@@ -3485,7 +3485,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     currentChange: function currentChange(state, currentIndex) {
       state.current = currentIndex;
       if (currentIndex === 1) {
-        (0, _route.default)('/pages/questionare/questionare');
+        (0, _route.default)('/pages/home/webView/webView');
       }
     } } };exports.default = _default;
 
@@ -11622,8 +11622,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       address: null,
 
       avatar: null, //头像
-      star: 1, //星级
-      coupon_count: 1 //优惠卷数量
+      star: 0, //星级
+      coupon_count: 0 //优惠卷数量
     } },
 
   actions: {

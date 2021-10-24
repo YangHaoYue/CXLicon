@@ -3,10 +3,10 @@
 		<!-- 所有内容的容器 -->
 		<view class="u-page">
 			<!-- 顶部轮播图 -->
-			<u-swiper :list="imgList" height="589"></u-swiper>
+			<u-swiper :list="banners" height="589" @click="changSwipers"></u-swiper>
 			<!-- 立即购买 -->
 			<view style="margin: -90rpx 30rpx 0 ;" @click="$u.route('/pages/home/buyCard/buyCard')">
-				<u-image src="@/static/home/buy.png" height="168" width="690" mode="aspectFit" />
+				<u-image :src="http.resourceUrl()+package.image" height="168" width="690" mode="aspectFit" />
 			</view>
 			<!-- 地址 -->
 			<view class="u-flex u-m-l-30 u-m-t-40 u-m-b-40">
@@ -30,7 +30,12 @@
 			
 			<!--  -->
 			<view class="u-m-l-30 u-m-t-20 u-m-r-30">
-				<u-swiper :list="activities" height="376" :showIndicator="false" border-radius="20" />
+				<block v-for="(item,i) in activities" :key="i">
+					<view class="u-m-b-20 u-m-t-20" @click="route(item)">
+						<u-image :src="item.image" width="690" height="376" border-radius="20"  />
+					</view>
+				</block>
+				<!-- <u-swiper :list="activities" height="376" :showIndicator="false" border-radius="20" /> -->
 			</view>
 			
 			<icon-loading v-model="showLoading" :time="500" />
@@ -55,7 +60,8 @@
 		data() {
 			return {
 				showLoading:true,
-				imgList:[],
+				banners:[],
+				package:'',
 				address:'',
 				navs:[],
 				activities:[]
@@ -71,8 +77,9 @@
 				let {code,data,msg} = await this.http.get('index/index')
 				if(code != 1000) return this.$u.toast(msg)
 				this.navs = data.navs;
+				this.package = data.package;
 				this.address = data.address;
-				this.imgList = data.banners.map(v=>this.__format(v));
+				this.banners = data.banners.map(v=>this.__format(v));
 				this.activities = data.activities.map(v=>this.__format(v));
 				this.$store.commit('setIconUrl',data.icon_url);
 			},
@@ -103,6 +110,9 @@
 					this.$u.route(`/pages/home/webView/webView?url=${item.link}`)
 				}
 				
+			},
+			changSwipers(e){
+				this.route(this.banners[e])
 			}
 		}
 	}

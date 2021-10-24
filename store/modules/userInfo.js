@@ -9,8 +9,8 @@ export default {
 			address: null, 
 			 
 			avatar: null, //头像
-			star: 1, //星级
-			coupon_count: 1 //优惠卷数量
+			star: 0, //星级
+			coupon_count: 0 //优惠卷数量
 		}
 	},
 	actions:{

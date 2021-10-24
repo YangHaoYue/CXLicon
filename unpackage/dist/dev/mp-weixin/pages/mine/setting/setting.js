@@ -172,53 +172,54 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   data: function data() {
     return {
-      name: '',
-      sex: '男',
-      birthday: '',
-      address: '',
+      name: this.$store.state.userInfo.userInfo.name,
+      sex: this.$store.state.userInfo.userInfo.sex === 0 ? '男' : '女',
+      birthday: this.$store.state.userInfo.userInfo.birthday,
+      address: this.$store.state.userInfo.userInfo.address,
       list: [{ name: '男' }, { name: '女' }],
       showTime: false,
       params: {
@@ -238,13 +239,26 @@ var _default =
 
 
   },
-  methods: {
-    setUserInfo: function setUserInfo() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$http$pos, code, msg;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.http.post('user/setUserInfo', { name: _this.name, sex: _this.sex, birthday: _this.birthday, address: _this.address }));case 2:_yield$_this$http$pos = _context.sent;code = _yield$_this$http$pos.code;msg = _yield$_this$http$pos.msg;
-                _this.$u.toast(msg);if (!(
-                code != 1000)) {_context.next = 8;break;}return _context.abrupt("return");case 8:
-                setTimeout(function () {return uni.navigateBack({ delta: 1 });}, 1500);case 9:case "end":return _context.stop();}}}, _callee);}))();
-    } } };exports.default = _default;
+  methods: _objectSpread(_objectSpread({},
+  (0, _vuex.mapActions)([
+  'getUserInfo'])), {}, {
+
+    getUser: function getUser() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$http$get, data, code;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.http.get('user/info'));case 2:_yield$_this$http$get = _context.sent;data = _yield$_this$http$get.data;code = _yield$_this$http$get.code;
+                if (code === 1000) {
+                  _this.getUserInfo(data);
+                }case 6:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    setUserInfo: function setUserInfo() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this2$http$po, code, msg;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.http.post('user/setUserInfo', { name: _this2.name, sex: _this2.sex === '男' ? 0 : 1, birthday: _this2.birthday, address: _this2.address }));case 2:_yield$_this2$http$po = _context2.sent;code = _yield$_this2$http$po.code;msg = _yield$_this2$http$po.msg;
+                _this2.$u.toast(msg);if (!(
+                code != 1000)) {_context2.next = 8;break;}return _context2.abrupt("return");case 8:
+                _this2.getUser();
+                setTimeout(function () {return uni.navigateBack({ delta: 1 });}, 1500);case 10:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    change: function change(e) {
+      this.birthday = "".concat(e.year, "-").concat(e.month, "-").concat(e.day);
+    } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

@@ -5,17 +5,21 @@
 		</view>
 		<block v-for="(item,index) in questionList" :key="item.id">
 			<view class=" u-m-t-20">
-				<view class="title u-font-28 text-black text-bold">
-					{{index+1}}{{item.title}}
+				<view class="title u-font-28 text-black">
+					{{index+1}} {{item.title}}
 				</view>
-				<u-radio-group wrap active-color="#DC2672"  @change="radioGroupChange($event,index)" v-if="item.type===0">
-					<u-radio v-for="(son, i) in item.items" :key="i" :name="son">{{son}}</u-radio>
+				<u-radio-group wrap active-color="#DC2672"  @change="radioGroupChange($event,item.id)" v-if="item.type===0">
+					<label>
+						<u-radio v-for="(son, i) in item.items" :key="i" :name="son">{{son}}</u-radio>
+					</label>
 				</u-radio-group>
-				<u-checkbox-group shape="circle" wrap active-color="#DC2672" @change="checkboxGroupChange($event,index)" v-if="item.type===1">
-					<u-checkbox v-model="son.checked" v-for="(son, j) in item.items" :key="j" :name="son.name">{{son.name}}</u-checkbox>
+				<u-checkbox-group shape="circle" wrap active-color="#DC2672" @change="checkboxGroupChange($event,item.id)" v-if="item.type===1">
+					<label>
+						<u-checkbox v-model="son.checked" v-for="(son, j) in item.items" :key="j" :name="son.name">{{son.name}}</u-checkbox>
+					</label>
 				</u-checkbox-group>
 				<view class="textarea" v-if="item.type===2">
-					<textarea @input="textInput($event,index)" type="text" placeholder="说说您认为我们还需要改进的地方" :placeholderStyle="placeholderStyle" />
+					<textarea @input="textInput($event,item.id)" type="text" :placeholder="' '" :placeholderStyle="placeholderStyle" />
 				</view>
 			</view>
 		</block>
@@ -76,7 +80,10 @@
 			async submitAnswerOfQuestionnaire(){
 				let answers = []
 				for (let index in this.answers) {
-					answers.push(this.answers[index])
+					answers.push({
+						id:index,
+						answers:this.answers[index]
+					})
 				}
 				let {code,msg} = await this.http.post('index/submitAnswerOfQuestionnaire',{answers})
 				this.$u.toast(msg)

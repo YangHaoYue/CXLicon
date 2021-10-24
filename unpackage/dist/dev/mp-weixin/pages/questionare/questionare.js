@@ -191,6 +191,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   onLoad: function onLoad() {
@@ -243,7 +247,10 @@ var _default =
     submitAnswerOfQuestionnaire: function submitAnswerOfQuestionnaire() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var answers, index, _yield$_this2$http$po, code, msg;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
                 answers = [];
                 for (index in _this2.answers) {
-                  answers.push(_this2.answers[index]);
+                  answers.push({
+                    id: index,
+                    answers: _this2.answers[index] });
+
                 }_context2.next = 4;return (
                   _this2.http.post('index/submitAnswerOfQuestionnaire', { answers: answers }));case 4:_yield$_this2$http$po = _context2.sent;code = _yield$_this2$http$po.code;msg = _yield$_this2$http$po.msg;
                 _this2.$u.toast(msg);if (!(

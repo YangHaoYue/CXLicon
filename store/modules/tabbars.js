@@ -39,7 +39,7 @@ export default {
 		currentChange(state,currentIndex){
 			state.current = currentIndex;
 			if(currentIndex === 1){
-				route('/pages/questionare/questionare')
+				route('/pages/home/webView/webView')
 			}
 		}
 	}
