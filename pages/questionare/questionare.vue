@@ -4,25 +4,23 @@
 			{{title}}{{desc}}
 		</view>
 		<block v-for="(item,index) in questionList" :key="item.id">
-			<view class="">
+			<view class=" u-m-t-20">
 				<view class="title u-font-28 text-black text-bold">
 					{{index+1}}{{item.title}}
 				</view>
-				<u-radio-group v-model="item.q_id" wrap active-color="#DC2672"  @change="radioGroupChange($event,index)" v-if="item.type===0">
+				<u-radio-group wrap active-color="#DC2672"  @change="radioGroupChange($event,index)" v-if="item.type===0">
 					<u-radio v-for="(son, i) in item.items" :key="i" :name="son">{{son}}</u-radio>
 				</u-radio-group>
 				<u-checkbox-group shape="circle" wrap active-color="#DC2672" @change="checkboxGroupChange($event,index)" v-if="item.type===1">
 					<u-checkbox v-model="son.checked" v-for="(son, j) in item.items" :key="j" :name="son.name">{{son.name}}</u-checkbox>
 				</u-checkbox-group>
 				<view class="textarea" v-if="item.type===2">
-					<u-input type="textarea" height="320" inputAlign="center" placeholder="说说您认为我们还需要改进的地方" :placeholderStyle="placeholderStyle" />
+					<textarea @input="textInput($event,index)" type="text" placeholder="说说您认为我们还需要改进的地方" :placeholderStyle="placeholderStyle" />
 				</view>
 			</view>
 		</block>
-		<view class="u-flex u-p-l-30 u-p-r-30">
-			<view class="u-font-28 text-black text-bold u-m-r-18">姓名</view>
-			<u-input border borderColor="#F01C77" />
-		</view>
+		
+		<u-button :custom-style="customStyle" type="error" shape="circle" @click="submitAnswerOfQuestionnaire">确认保存</u-button>
 	</view>
 </template>
 
@@ -36,7 +34,15 @@
 				title:'',
 				desc:'',
 				questionList:[],
-				placeholderStyle:"color:#EE9ABB;font-size:32rpx"
+				placeholderStyle:"color:#EE9ABB;font-size:32rpx",
+				answers:{},
+				customStyle:{
+					backgroundColor:"#ED1E79",
+					position:'fixed',
+					bottom:"30rpx",
+					left:'10rpx',
+					right:'10rpx'
+				}
 			}
 		},
 		methods: {
@@ -59,15 +65,23 @@
 				console.log(this.questionList);
 			},
 			radioGroupChange(event,index){
-				console.log(event);
+				this.answers[index] = event;
 			},
 			checkboxGroupChange(event,index){
-				console.log(event);
+				this.answers[index] = event;
 			},
-			submitAnswerOfQuestionnaire(){
-				this.http.post('index/submitAnswerOfQuestionnaire',{
-					answers:''
-				})
+			textInput(event,index){
+				this.answers[index] = event.detail.value;
+			},
+			async submitAnswerOfQuestionnaire(){
+				let answers = []
+				for (let index in this.answers) {
+					answers.push(this.answers[index])
+				}
+				let {code,msg} = await this.http.post('index/submitAnswerOfQuestionnaire',{answers})
+				this.$u.toast(msg)
+				if(code != 1000) return 
+				setTimeout(()=>uni.navigateBack({delta:1}),1500)
 			}
 		}
 	}
@@ -76,10 +90,10 @@
 <style>
 	.textarea{
 		background-color: #FFEEF7;
-		width: 650rpx;
+		width: 690rpx;
 		height: 300rpx;
 		border-radius: 30rpx;
-		margin: 20rpx 25rpx;
+		margin: 20rpx 0;
 		padding: 30rpx;
 	}
 </style>

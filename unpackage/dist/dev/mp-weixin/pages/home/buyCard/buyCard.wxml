@@ -1,0 +1,1 @@
+<view><view><rich-text nodes="{{data}}"></rich-text></view><u-button vue-id="7e64a120-1" custom-style="{{customStyle}}" type="error" shape="circle" data-event-opts="{{[['^click',[['pay']]]]}}" bind:click="__e" bind:__l="__l" vue-slots="{{['default']}}">立即购买</u-button></view>

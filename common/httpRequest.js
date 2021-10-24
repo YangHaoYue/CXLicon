@@ -9,7 +9,7 @@ const tui = {
 	},
 	//资源地址
 	resourceUrl:function(){
-		return 'http://icon.0831.run/'
+		return 'http://icon.0831.run/upload/'
 	},
 	toast: function(text, duration, success) {
 		uni.showToast({

@@ -22,4 +22,11 @@
   bottom: 0;
   margin: auto;
 }
+.bg-gray.data-v-3e10928b{
+	background: radial-gradient(circle at right top, transparent 10rpx,  #C3C0C1 0) top left / 200rpx 51% no-repeat,
+	  radial-gradient(circle at right bottom, transparent 10rpx,  #C3C0C1 0) bottom left /200rpx 51% no-repeat,
+	  radial-gradient(circle at left top, transparent 10rpx, #C3C0C1 0) top right /500rpx 51% no-repeat,
+	  radial-gradient(circle at left bottom, transparent 10rpx, #C3C0C1 0) bottom right /500rpx 51% no-repeat;
+	z-index: 9999;
+}
 

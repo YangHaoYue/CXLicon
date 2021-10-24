@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<view class="base-coupons u-flex" @click="$u.route('/pages/mine/coupons/detail')">
+		<view class="base-coupons u-flex " :class="currentIndex===2?'bg-gray':''" @click="$u.route('/pages/mine/coupons/detail')">
 			<view class="u-flex u-row-center" style="width: 200rpx;">
-				<u-image src="" width="180" height="180"></u-image>
+				<u-image :src="http.resourceUrl()+image" width="180" height="180"></u-image>
 			</view>
 			<view  style="width: 500rpx;padding: 0 20rpx;">
 				<slot/>
@@ -14,6 +14,7 @@
 <script>
 	export default {
 		name:"coupons-card",
+		props:['image','index','currentIndex'],
 		data() {
 			return {
 				
@@ -44,5 +45,12 @@
 	  top: 0;
 	  bottom: 0;
 	  margin: auto;
+	}
+	.bg-gray{
+		background: radial-gradient(circle at right top, transparent 10rpx,  #C3C0C1 0) top left / 200rpx 51% no-repeat,
+		  radial-gradient(circle at right bottom, transparent 10rpx,  #C3C0C1 0) bottom left /200rpx 51% no-repeat,
+		  radial-gradient(circle at left top, transparent 10rpx, #C3C0C1 0) top right /500rpx 51% no-repeat,
+		  radial-gradient(circle at left bottom, transparent 10rpx, #C3C0C1 0) bottom right /500rpx 51% no-repeat;
+		z-index: 9999;
 	}
 </style>

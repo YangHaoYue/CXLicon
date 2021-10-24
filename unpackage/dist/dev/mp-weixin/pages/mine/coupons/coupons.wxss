@@ -1,0 +1,16 @@
+
+.primary.data-v-9bf30e70{
+	background-color: #0F58FB;
+	color: #FFFFFF;
+}
+.red.data-v-9bf30e70{
+	background-color: #ED1E79;
+	color: #FFFFFF;
+}
+.text-gray.data-v-9bf30e70{
+}
+.bg-gray.data-v-9bf30e70{
+	background-color: #9B999A;
+	color:#FFFFFF;
+}
+

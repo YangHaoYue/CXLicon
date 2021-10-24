@@ -5,7 +5,7 @@
 			<!-- 顶部轮播图 -->
 			<u-swiper :list="imgList" height="589"></u-swiper>
 			<!-- 立即购买 -->
-			<view style="margin: -90rpx 30rpx 0 ;">
+			<view style="margin: -90rpx 30rpx 0 ;" @click="$u.route('/pages/home/buyCard/buyCard')">
 				<u-image src="@/static/home/buy.png" height="168" width="690" mode="aspectFit" />
 			</view>
 			<!-- 地址 -->
@@ -15,8 +15,8 @@
 			</view>
 			<!-- 九宫格按钮 -->
 			<view class="u-flex u-row-around">
-				<block v-for="(item,index) in navs" :key="itam.id">
-					<view class="u-flex-1 u-flex" style="flex-direction: column;" @click="$u.route(item.link)">
+				<block v-for="(item,index) in navs" :key="index">
+					<view class="u-flex-1 u-flex" style="flex-direction: column;" @click="route(item)">
 						<image :src="http.resourceUrl() + item.image" mode="aspectFit" style="height: 71rpx !important;width: 71rpx;"></image>
 						<view class="u-m-t-20 u-text-center text-bold u-font-30 text-black">{{item.title}}</view>
 					</view>
@@ -33,7 +33,7 @@
 				<u-swiper :list="activities" height="376" :showIndicator="false" border-radius="20" />
 			</view>
 			
-			<icon-loading v-model="showLoading" />
+			<icon-loading v-model="showLoading" :time="500" />
 		</view>
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
 		<u-tabbar  :list="list" :mid-button="true" @change="currentChange"></u-tabbar>
@@ -45,6 +45,7 @@
 	export default {
 		onLoad() {
 			this.getInfo();
+			this.getMineMenu();
 		},
 		computed: {
 			...mapState({
@@ -56,29 +57,36 @@
 				showLoading:true,
 				imgList:[],
 				address:'',
-				navs:[
-					{name:'项目介绍',img:'../../static/home/introduce.png',url:''},
-					{name:'合作洽谈',img:'../../static/home/teamwork.png',url:''},
-					{name:'问卷调查',img:'../../static/home/questionnaire.png',url:''},
-					{name:'最新活动',img:'../../static/home/activity.png',url:''}
-				],
+				navs:[],
 				activities:[]
 			}
 		},
 		methods: {
 			...mapActions([
-				'currentChange'
+				'currentChange',
+				'getMenu',
+				'getUserInfo'
 			]),
 			async getInfo(){
-				let {code,data} = await this.http.get('index/index')
+				let {code,data,msg} = await this.http.get('index/index')
+				if(code != 1000) return this.$u.toast(msg)
 				this.navs = data.navs;
 				this.address = data.address;
 				this.imgList = data.banners.map(v=>this.__format(v));
 				this.activities = data.activities.map(v=>this.__format(v));
 				this.$store.commit('setIconUrl',data.icon_url);
-				setTimeout(()=>{
-					this.showLoading = false
-				},500)
+			},
+			async getMineMenu(){
+				let {code,data,msg} = await this.http.get('user/getMenu')
+				if(code != 1000) return this.$u.toast(msg)
+				this.getUser()
+				this.getMenu(data)
+			},
+			async getUser(){
+				let {data,code} = await this.http.get('user/info')
+				if(code === 1000){
+					this.getUserInfo(data)
+				}
 			},
 			__format(data){
 				return{
@@ -86,6 +94,15 @@
 					link:data.link,
 					target:data.target
 				}
+			},
+			route(item){
+				//0的话跳转小程序页面1公众号网页
+				if(item.target === 0){
+					this.$u.route(item.link)
+				}else{
+					this.$u.route(`/pages/home/webView/webView?url=${item.link}`)
+				}
+				
 			}
 		}
 	}

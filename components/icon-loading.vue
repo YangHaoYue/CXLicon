@@ -14,12 +14,19 @@
 			value:{
 				type:Boolean,
 				default:false
+			},
+			time:{
+				type:[Number,String],
+				default:1500
 			}
 		},
 		watch: {
 			value(newVal) {
 				this.show = newVal
 			}
+		},
+		mounted() {
+			this.close()
 		},
 		data() {
 			return {
@@ -30,6 +37,11 @@
 			input() {
 				let value = this.show
 				this.$emit('input',value)
+			},
+			close(){
+				setTimeout(()=>{
+					this.$emit('input',false)
+				},this.time)
 			}
 		},
 	}

@@ -5,7 +5,11 @@
     "pages/center/index",
     "pages/mine/coupons/coupons",
     "pages/mine/coupons/detail",
-    "pages/questionare/questionare"
+    "pages/questionare/questionare",
+    "pages/mine/setting/setting",
+    "pages/mine/cardRecord/cardRecord",
+    "pages/home/buyCard/buyCard",
+    "pages/home/webView/webView"
   ],
   "subPackages": [],
   "window": {

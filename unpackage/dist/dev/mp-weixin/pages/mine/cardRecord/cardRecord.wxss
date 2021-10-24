@@ -1,0 +1,10 @@
+
+.card.data-v-04831868{
+	width: 690rpx;
+	height: 168rpx;
+	margin: 30rpx;
+	padding: 0 30rpx;
+	border-radius: 15rpx;
+	box-shadow: 0px 1px 4px 3px rgba(188, 188, 188, 0.09);
+}
+
