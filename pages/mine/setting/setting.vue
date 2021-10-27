@@ -72,7 +72,7 @@
 			async getUser(){
 				let {data,code} = await this.http.get('user/info')
 				if(code === 1000){
-					this.getUserInfo(data)
+					this.$store.commit('getUserInfo',data)
 				}
 			},
 			async setUserInfo(){

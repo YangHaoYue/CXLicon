@@ -5,15 +5,16 @@
 		<u-gap/>
 		
 		<block v-for="(item,index) in list" :key="index">
-			<coupons-card :image="item.image" :index='index' :currentIndex="screen.currentIndex">
+			<coupons-card :image="item.image" :index='index' :currentIndex="screen.currentIndex" :coupon_id="item.id">
 				<view class="u-flex u-row-between">
 					<view>
-						<view class="text-bold" style="font-size: 40rpx;">{{item.name}}</view>
-						<view class="u-font-22 u-m-t-20">有效期：{{item.start_at}}-{{item.end_at}}</view>
+						<view class="text-bold" style="font-size: 40rpx;" :class="index%2===0?'text-primary':'text-red'" v-if="screen.currentIndex === 0">{{item.name}}</view>
+						<view class="text-bold" style="font-size: 40rpx;" v-else>{{item.name}}</view>
+						<view class="u-font-22 u-m-t-20 u-line-1">有效期：{{item.start_at}}-{{item.end_at}}</view>
 					</view>
-					<view class="cu-btn round" :class="index%2===0?'primary':'red'" v-if="screen.currentIndex === 0">立即使用</view>
-					<view class="cu-btn round bg-gray" v-else-if="screen.currentIndex === 1">已使用</view>
-					<view class="cu-btn round bg-gray" v-else>已过期</view>
+					<view class="u-line-1 cu-btn round u-font-26" :class="index%2===0?'primary':'red'" v-if="screen.currentIndex === 0">立即使用</view>
+					<view class="u-line-1 cu-btn round bg-gray u-font-26" v-else-if="screen.currentIndex === 1">已使用</view>
+					<view class="u-line-1 cu-btn round bg-gray u-font-26" v-else>已过期</view>
 				</view>
 			</coupons-card>
 		</block>
@@ -74,7 +75,7 @@
 		methods: {
 			change(index) {
 				this.screen.currentIndex = index;
-				// this.clearData()
+				this.clearData()
 			},
 			async getMineCoupon(){
 				let {code,data} = await this.http.get('coupon/getMine',{page:this.page,type:this.screen.currentIndex})
@@ -109,8 +110,11 @@
 		background-color: #ED1E79;
 		color: #FFFFFF;
 	}
-	.text-gray{
-		
+	.text-red{
+		color: #ED1E79;
+	}
+	.text-primary{
+		color: #0F58FB;
 	}
 	.bg-gray{
 		background-color: #9B999A;

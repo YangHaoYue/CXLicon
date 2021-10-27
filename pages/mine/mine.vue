@@ -3,17 +3,17 @@
 		<view class="u-page">
 			<u-gap/>
 			<view class="u-flex" style="padding: 0 41rpx 30rpx 33rpx;">
-				<u-avatar :src="avatarUrl" size="136" class="avatar round"/>
+				<u-avatar :src="avatar" size="136" class="avatar round"/>
 				<view class="u-m-l-30 u-flex-1 u-m-t-16" v-show="islogin">
 					<view class="u-flex u-row-between">
-						<view class="u-font-36 text-bold u-m-r-18 text-black">{{nick_name}}</view>
+						<view class="u-font-36 text-bold u-m-r-18 text-black">{{name}}</view>
 						<u-icon name="zhuanfa" size="32" @click="$u.route('/pages/mine/setting/setting')"/>
 					</view>
 					<view class="u-m-t-6 u-font-28">
 						星级：<u-rate :count="5" disabled size="28" v-model="star" gutter="2" active-color="#ED1E79" />
 					</view>
 				</view>
-				<button v-show="!islogin" class="text-black text-bold u-font-36 u-m-l-20 u-reset-button" open-type="getUserInfo" @getuserinfo="getUserInfo" @tap="getUserInfo">立即登录</button>
+				<button v-show="!islogin" class="cu-btn round line-black text-black text-bold u-font-36 u-m-l-20" open-type="getUserInfo" @getuserinfo="getInfo" @tap="getInfo">立即登录</button>
 			</view>
 			
 			<!-- 购卡记录 -->
@@ -31,6 +31,9 @@
 			</view>
 			
 			<u-cell-group>
+				<u-cell-item  title="扫码核销" @click="scancode">
+					<u-icon class="u-m-r-10" slot="icon" size="32" name="scan"></u-icon>
+				</u-cell-item>
 				<u-cell-item  title="我的订单" @click="$u.route('/pages/mine/coupons/coupons')">
 					<u-icon class="u-m-r-10" slot="icon" size="32" name="file-text"></u-icon>
 				</u-cell-item>
@@ -56,7 +59,7 @@
 			
 		</view>
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
-		<u-tabbar  :list="list" :mid-button="true"></u-tabbar>
+		<u-tabbar  :list="list" :mid-button="true" active-color="#EC1E7B" @change="currentChange($event)"></u-tabbar>
 	</view>
 </template>
 
@@ -65,14 +68,13 @@
 	export default {
 		onLoad() {
 			if(this.http.isLogin()){
+				this.islogin = true
 				this.login();
-				console.log(this.star);
-				console.log(this.coupon_count);
 			}
 		},
 		computed: {
 			...mapState({
-				list:state => state.tabbars.list,
+				// list:state => state.tabbars.list,
 				
 				menus:state => state.mineMenu.menus,
 				service_tel:state => state.mineMenu.service_tel,
@@ -90,12 +92,41 @@
 				nick_name:'',
 				avatarUrl:'',
 				value:1,
+				//显示核销按钮
+				show_scan:false,
 				//客服弹窗
-				showModal:false
+				showModal:false,
+				list: [{
+						iconPath: "home",
+						selectedIconPath: "home-fill",
+						text: '首页',
+						isDot: false,
+						customIcon: false,
+						pagePath: "/pages/home/home"
+					},
+					{
+						iconPath: this.http.resourceUrl()+'static/circle.png',
+						selectedIconPath: this.http.resourceUrl()+'static/circle.png',
+						midButton: true,
+						customIcon: false,
+					},
+					{
+						iconPath: "account",
+						selectedIconPath: "account-fill",
+						text: '我的',
+						isDot: false,
+						customIcon: false,
+						pagePath: "/pages/mine/mine"
+					},
+				],
 			}
 		},
 		methods: {
-			getUserInfo(e){
+			...mapActions([
+				'currentChange',
+				'getUserInfo'
+			]),
+			getInfo(e){
 				if(wx.getUserProfile){
 					wx.getUserProfile({
 					    desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
@@ -120,17 +151,41 @@
 					success: (res) => {
 						this.http.post('user/auth',{
 							code:res.code,
-							avatar:uni.getStorageSync('personImg')||e.userInfo.avatarUrl,
-							name:uni.getStorageSync('nickName')||e.userInfo.nickName
+							avatar:uni.getStorageSync('personImg')||e.userInfo&&e.userInfo.avatarUrl,
+							name:uni.getStorageSync('nickName')||e.userInfo&&e.userInfo.nickName
 						}).then(res=>{
 							if(res.code==1000){
 								this.islogin = true
 								this.http.setUserInfo(res.data,uni.getStorageSync('personImg')||e.userInfo.avatarUrl,uni.getStorageSync('nickName')||e.userInfo.nickName);
-								this.nick_name = uni.getStorageSync('nickName')||e.userInfo.nickName;
-								this.avatarUrl = uni.getStorageSync('personImg')||e.userInfo.avatarUrl;
+								this.getUser()
 							}else{
 								this.http.toast(res.msg)
 							}
+						})
+					}
+				})
+			},
+			async getUser(){
+				let {data,code} = await this.http.get('user/info')
+				if(code === 1000){
+					this.nick_name = data.name;
+					this.avatarUrl = data.avatar;
+					this.show_scan = data.show_scan;
+					this.getUserInfo(data)
+				}
+			},
+			//核销
+			scancode(){
+				uni.scanCode({
+					success:(res)=> {
+						console.log(res);
+						console.log('条码类型：' + res.scanType);
+						console.log('条码内容：' + res.result);
+						let param = JSON.parse(res.result)
+						this.http.get('coupon/useCoupon',param)
+							.then(result=>{
+							this.$u.toast(result.msg,3000)
+							console.log(result);
 						})
 					}
 				})

@@ -5,16 +5,15 @@
  */
 .card.data-v-48ae5266 {
   width: 700rpx;
-  height: 790rpx;
+  height: 500rpx;
   border-radius: 20rpx;
   margin: 30rpx 25rpx;
-  padding: 60rpx 0 0;
 }
 .detail.data-v-48ae5266 {
   padding: 30rpx;
   line-height: 2.2;
 }
 .detail image.data-v-48ae5266 {
-  width: 18rpx;
+  width: 30rpx;
 }
 

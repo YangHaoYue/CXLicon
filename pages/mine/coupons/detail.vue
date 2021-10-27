@@ -6,9 +6,8 @@
 		</coupons-card>
 		
 		<view class="bg-white card u-flex u-row-center" style="flex-direction: column;">
-			<view class="u-font-28 text-gray u-text-center">{{}}</view>
-			<u-image src="" width="600" height="250" class="u-m-t-20"/>
-			<u-image src="" width="350" height="350" class="u-m-t-30"/>
+			<image :src="data.qrcode" mode="aspectFit" style="height: 350rpx;width: 350rpx;"></image>
+			<!-- <u-image :src="" width="350" height="350"/>/ -->
 		</view>
 		
 		<view class="detail">
@@ -20,8 +19,8 @@
 				<image src="/static/mine/lock.png" mode="widthFix"/>
 				<view class="u-font-26 text-gray u-m-l-10">有效期：{{data.store}}</view>
 			</view>
-			<view class="u-flex">
-				<image src="/static/mine/notice.png" mode="widthFix"/>
+			<view class="u-flex u-col-top">
+				<image src="/static/mine/notice.png" mode="widthFix" class="u-m-t-10"/>
 				<view class="u-font-26 text-gray u-m-l-10">
 					<view >使用须知：</view>
 					<view >{{data.notice}}</view>
@@ -45,11 +44,12 @@
 			return {
 				coupon_id:'',
 				data:{
-					image: "images/1f61aff1dbd139f6cf78a858fdf4f57d.png", //图片
-					name: "满200减100", //优惠卷名称
-					store: "嘉兴秀洲区xx广场店", //店铺名称
-					notice: "时间：仅限在19-22点使用\r\n要求：必须带女盆友来" //使用事项
-				}
+					image: "", //图片
+					name: "", //优惠卷名称
+					store: "", //店铺名称
+					notice: "" ,//使用事项
+					qrcode:''//二维码
+				},
 			}
 		},
 		methods: {
@@ -66,16 +66,16 @@
 <style scoped lang="scss">
 	.card{
 		width: 700rpx;
-		height: 790rpx;
+		height: 500rpx;
 		border-radius: 20rpx;
 		margin: 30rpx 25rpx;
-		padding: 60rpx 0 0;
 	}
 	.detail{
 		padding: 30rpx;
 		line-height: 2.2;
 		image{
-			width: 18rpx;
+			width: 30rpx;
+			
 		}
 	}
 </style>

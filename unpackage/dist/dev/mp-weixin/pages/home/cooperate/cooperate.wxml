@@ -1,0 +1,1 @@
+<view><image style="width:100%;" src="{{$root.g0+cooperate_img}}" mode="widthFix"></image><u-image class="phone" vue-id="3cd1029c-1" src="/static/phone.png" width="100" height="100" data-event-opts="{{[['^click',[['makeCall']]]]}}" bind:click="__e" bind:__l="__l"></u-image></view>

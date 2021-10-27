@@ -2,6 +2,7 @@
   "navigationBarTitleText": "购买记录",
   "enablePullDownRefresh": false,
   "usingComponents": {
+    "u-gap": "/uview-ui/components/u-gap/u-gap",
     "u-empty": "/uview-ui/components/u-empty/u-empty",
     "u-loadmore": "/uview-ui/components/u-loadmore/u-loadmore"
   }

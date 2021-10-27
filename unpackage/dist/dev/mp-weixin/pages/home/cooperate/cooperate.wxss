@@ -1,0 +1,11 @@
+
+page{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.phone{
+	position: fixed;
+	bottom: 300rpx;
+	right: 30rpx;
+}
+

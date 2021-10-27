@@ -4,7 +4,7 @@ export default {
 		list: [{
 				iconPath: "home",
 				selectedIconPath: "home-fill",
-				text: 'é¦–é¡µ',
+				text: 'Ê×Ò³',
 				isDot: false,
 				customIcon: false,
 				pagePath: "/pages/home/home"
@@ -18,14 +18,16 @@ export default {
 			{
 				iconPath: "account",
 				selectedIconPath: "account-fill",
-				text: 'æˆ‘çš„',
+				text: 'ÎÒµÄ',
 				isDot: false,
 				customIcon: false,
 				pagePath: "/pages/mine/mine"
 			},
 		],
 		current: 0,
-		iconUrl:''
+		iconUrl:'',
+		cooperate_img:'',
+		cooperate_mobile:''
 	},
 	actions:{
 		currentChange({commit},currentIndex){
@@ -35,6 +37,12 @@ export default {
 	mutations:{
 		setIconUrl(state,iconUrl){
 			state.iconUrl = iconUrl;
+		},
+		setCooperate_img(state,cooperate_img){
+			state.cooperate_img = cooperate_img;
+		},
+		setCooperate_mobile(state,cooperate_mobile){
+			state.cooperate_mobile = cooperate_mobile;
 		},
 		currentChange(state,currentIndex){
 			state.current = currentIndex;

@@ -41,7 +41,7 @@
 			<icon-loading v-model="showLoading" :time="500" />
 		</view>
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
-		<u-tabbar  :list="list" :mid-button="true" @change="currentChange"></u-tabbar>
+		<u-tabbar  :list="list" :mid-button="true" active-color="#EC1E7B" @change="currentChange($event)"></u-tabbar>
 	</view>
 </template>
 
@@ -54,7 +54,7 @@
 		},
 		computed: {
 			...mapState({
-				list:state => state.tabbars.list
+				// list:state => state.tabbars.list
 			})
 		},
 		data() {
@@ -64,7 +64,30 @@
 				package:'',
 				address:'',
 				navs:[],
-				activities:[]
+				activities:[],
+				list: [{
+						iconPath: "home",
+						selectedIconPath: "home-fill",
+						text: '首页',
+						isDot: false,
+						customIcon: false,
+						pagePath: "/pages/home/home"
+					},
+					{
+						iconPath: this.http.resourceUrl()+'static/circle.png',
+						selectedIconPath: this.http.resourceUrl()+'static/circle.png',
+						midButton: true,
+						customIcon: false,
+					},
+					{
+						iconPath: "account",
+						selectedIconPath: "account-fill",
+						text: '我的',
+						isDot: false,
+						customIcon: false,
+						pagePath: "/pages/mine/mine"
+					},
+				],
 			}
 		},
 		methods: {
@@ -82,6 +105,8 @@
 				this.banners = data.banners.map(v=>this.__format(v));
 				this.activities = data.activities.map(v=>this.__format(v));
 				this.$store.commit('setIconUrl',data.icon_url);
+				this.$store.commit('setCooperate_img',data.cooperate_img);
+				this.$store.commit('setCooperate_mobile',data.cooperate_mobile);
 			},
 			async getMineMenu(){
 				let {code,data,msg} = await this.http.get('user/getMenu')

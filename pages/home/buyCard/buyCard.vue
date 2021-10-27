@@ -9,6 +9,7 @@
 </template>
 
 <script>
+	import { mapActions } from "vuex"
 	export default {
 		onLoad() {
 			this.getDetail()
@@ -23,6 +24,9 @@
 			}
 		},
 		methods: {
+			...mapActions([
+				'getUserInfo'
+			]),
 			async getDetail(){
 				let {code,data,msg} = await this.http.get('package/getDetail')
 				if(code === 1000){
@@ -31,7 +35,7 @@
 				}
 			},
 			async pay(){
-				let {data} = await this.http.get('package/pay',{id:this.id})
+				let {data} = await this.http.get('package/pay',{payment_no:this.id})
 				wx.requestPayment({
 					timeStamp: data.timestamp,
 					nonceStr:data.nonceStr,
@@ -42,14 +46,20 @@
 						 console.log('get url',res)
 						if (res.errMsg == 'requestPayment:ok') {
 							this.$u.toast('支付成功！')
+							this.getUser()
 							setTimeout(()=>uni.navigateBack({delta:1}),1500)
 						}
 					},
 					fail:(res)=> {
 						this.$u.toast(res.errMsg)
-						console.log(res);
 					}
 				})
+			},
+			async getUser(){
+				let {data,code} = await this.http.get('user/info')
+				if(code === 1000){
+					this.getUserInfo(data)
+				}
 			},
 		}
 	}

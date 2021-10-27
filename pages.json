@@ -89,6 +89,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/home/cooperate/cooperate",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

@@ -7,7 +7,11 @@
 	background-color: #ED1E79;
 	color: #FFFFFF;
 }
-.text-gray.data-v-9bf30e70{
+.text-red.data-v-9bf30e70{
+	color: #ED1E79;
+}
+.text-primary.data-v-9bf30e70{
+	color: #0F58FB;
 }
 .bg-gray.data-v-9bf30e70{
 	background-color: #9B999A;

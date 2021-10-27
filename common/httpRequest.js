@@ -24,7 +24,7 @@ const tui = {
 			content: content,
 			showCancel: showCancel,
 			cancelColor: "#555",
-			confirmColor: confirmColor || "#1059FB",
+			confirmColor: confirmColor || "#EC1E7B",
 			confirmText: confirmText || "确定",
 			cancelText: cancelText || '取消',
 			success(res) {
@@ -111,9 +111,9 @@ const tui = {
 						tui.modal("","登录信息已失效，请重新登录", false, () => {
 							//store.commit("logout") 登录页面执行
 							uni.reLaunch({
-								url:'/pages/login/login'
+								url:'/pages/mine/mine'
 							})
-						},'#FE8702')
+						},'#EC1E7B')
 						return
 					}
 					return resolve(res.data)

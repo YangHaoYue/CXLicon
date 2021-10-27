@@ -1,15 +1,16 @@
 <template>
 	<view class="body-color-gray":style="'min-height:'+$u.sys().windowHeight+'px;'">
+		<u-gap/>
 		<block v-for="(item,i) in list" :key="i">
 			<view class="card u-flex bg-white">
 				<view class="u-flex-2">
-					<view class="u-font-30 text-black u-m-b-10">{{item.mo}}</view>
+					<view class="u-font-30 text-black u-m-b-10">{{item.no}}</view>
 					<view class="u-font-24 text-gray">有效期至：{{item.end_at}}</view>
 				</view>
 				<view class="text-black text-bold u-flex-2 u-text-center" style="font-size: 40rpx;">
 					{{item.name}}
 				</view>
-				<view class="u-flex-1 u-text-center" style="font-size: 70rpx;color: #ED1E79;">
+				<view class="u-flex-1 u-text-center" style="font-size: 50rpx;color: #ED1E79;">
 					{{item.price}}
 				</view>
 			</view>
