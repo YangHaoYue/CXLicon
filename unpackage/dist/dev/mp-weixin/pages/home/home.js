@@ -168,7 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));
 
 
 
@@ -301,9 +301,9 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
     },
     //打开地图
     openMap: function openMap() {
-      var latitude = '30.740144';
-      var longitude = '120.796931';
-      uni.openLocation({
+      var latitude = 30.740144;
+      var longitude = 120.796931;
+      wx.openLocation({
         latitude: latitude,
         longitude: longitude,
         success: function success() {
@@ -329,7 +329,6 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
     changSwipers: function changSwipers(e) {
       this.route(this.banners[e]);
     } }) };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

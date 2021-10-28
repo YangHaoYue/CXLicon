@@ -131,9 +131,9 @@
 			},
 			//打开地图
 			openMap(){
-				const latitude = '30.740144';
-				const longitude = '120.796931';	
-				uni.openLocation({
+				const latitude = 30.740144;
+				const longitude = 120.796931;	
+				wx.openLocation({
 					latitude,
 					longitude,
 					success: function () {

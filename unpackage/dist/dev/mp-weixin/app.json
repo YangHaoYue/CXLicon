@@ -40,6 +40,11 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "方便计算距离"
+    }
+  },
   "usingComponents": {
     "icon-loading": "/components/icon-loading"
   }
