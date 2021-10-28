@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "",
   "enablePullDownRefresh": false,
+  "navigationBarTextStyle": "white",
   "navigationStyle": "custom",
   "usingComponents": {
     "u-swiper": "/uview-ui/components/u-swiper/u-swiper",

@@ -17,13 +17,15 @@
 			</view>
 			
 			<!-- 购卡记录 -->
-			<u-image class="u-m-t-20 u-m-b-20" src="@/static/mine/records.png" height="168" width="750" mode="aspectFit" 
-				@click="$u.route('/pages/mine/cardRecord/cardRecord')" />
+			<view class="u-flex u-row-center">
+				<u-image src="@/static/mine/records.png" width="730" mode="widthFix"
+					@click="$u.route('/pages/mine/cardRecord/cardRecord')" />
+			</view>
 			<!-- 我的优惠卷 -->
 			<view class="card u-flex u-row-between bg-white" @click="$u.route('/pages/mine/coupons/coupons')">
 				<view class="u-flex">
 					<u-image src="@/static/mine/Coupons.png" width="58" height="47" />
-					<view class="u-font-28 text-bold text-black u-m-l-20">我的优惠卷</view>
+					<view class="u-font-28 text-bold text-black u-m-l-20">我的优惠券</view>
 				</view>
 				<view class="u-flex">
 					<view style="font-size: 60rpx;color: #F1207B;">{{coupon_count}}<text class="u-font-26 text-black u-m-l-10">张</text></view>
@@ -48,7 +50,7 @@
 			
 			<u-popup v-model="showModal" mode="center" border-radius="15" width="600" height="600" mask-close-able>
 				<view class="u-flex u-text-center u-p-t-40" style="flex-direction: column;height: 100%;">
-					<u-image src="@/static/server.jpg" width="440" mode="widthFix" />
+					<u-image src="@/static/server.png" width="175" mode="widthFix" style="margin: 60rpx;"/>
 					<view class="u-m-t-20 u-m-b-10 u-font-28">客户热线：{{service_tel}}</view>
 					<view class="u-m-t-10 u-m-b-20 u-font-28">客户微信：{{service_wx}}</view>
 				</view>
@@ -182,11 +184,7 @@
 						console.log('条码类型：' + res.scanType);
 						console.log('条码内容：' + res.result);
 						let param = JSON.parse(res.result)
-						this.http.get('coupon/useCoupon',param)
-							.then(result=>{
-							this.$u.toast(result.msg,3000)
-							console.log(result);
-						})
+						this.$u.route(`/pages/mine/coupons/detail?member_id=${param.member_id}&coupon_id=${param.coupon_id}`)
 					}
 				})
 			}

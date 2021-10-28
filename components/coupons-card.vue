@@ -40,7 +40,8 @@
 	  .base-coupons::before {
 	  content: '';
 	  height: 130rpx;
-	  border: 2rpx dashed #8C898C;
+	  border-right: 1rpx dashed #8C898C;
+	  transform: translateY(0.5);
 	  position: absolute;
 	  left: 196rpx;
 	  top: 0;

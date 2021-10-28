@@ -5,7 +5,7 @@
 			<view class="text-bold u-text-center" style="font-size: 40rpx;">{{data.name}}</view>
 		</coupons-card>
 		
-		<view class="bg-white card u-flex u-row-center" style="flex-direction: column;">
+		<view class="bg-white card u-flex u-row-center" style="flex-direction: column;" v-if="showQrcode">
 			<image :src="data.qrcode" mode="aspectFit" style="height: 350rpx;width: 350rpx;"></image>
 			<!-- <u-image :src="" width="350" height="350"/>/ -->
 		</view>
@@ -27,6 +27,11 @@
 				</view>
 			</view>
 		</view>
+		
+		<u-gap height="120" v-if="member_id" />
+		<view class="bottom-btn" v-if="member_id">
+			<u-button :custom-style="customStyle" type="error" shape="circle" @click="useCoupon">核销</u-button>
+		</view>
 	</view>
 </template>
 
@@ -38,11 +43,18 @@
 		},
 		onLoad(e) {
 			this.coupon_id = e.coupon_id
+			if(e.member_id){
+				this.member_id = e.member_id
+				this.showQrcode = false
+			}
 			this.getCouponDetail()
 		},
 		data() {
 			return {
 				coupon_id:'',
+				member_id:'',
+				//显示二维码
+				showQrcode:true,
 				data:{
 					image: "", //图片
 					name: "", //优惠卷名称
@@ -50,6 +62,9 @@
 					notice: "" ,//使用事项
 					qrcode:''//二维码
 				},
+				customStyle:{
+					backgroundColor:"#ED1E79",
+				}
 			}
 		},
 		methods: {
@@ -57,6 +72,16 @@
 				let {code,data} = await this.http.get('coupon/getCouponDetail',{coupon_id:this.coupon_id})
 				if(code === 1000){
 					this.data = data
+				}
+			},
+			async useCoupon(){
+				let {code,msg} = await this.http.get('coupon/useCoupon',{
+					coupon_id:this.coupon_id,
+					member_id:this.member_id
+				})
+				this.$u.toast(msg,3000)
+				if(code === 1000){
+					setTimeout(()=>{uni.navigateBack({delta: 1});},2000)
 				}
 			},
 		}

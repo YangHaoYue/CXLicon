@@ -126,13 +126,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   var g0 = _vm.http.resourceUrl()
   var g1 = _vm.http.resourceUrl()
-
-  if (!_vm._isMounted) {
-    _vm.e0 = function($event) {
-      return _vm.$u.route("/pages/home/buyCard/buyCard")
-    }
-  }
-
   _vm.$mp.data = Object.assign(
     {},
     {
@@ -175,7 +168,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));
 
 
 
@@ -237,6 +230,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
   data: function data() {
     return {
       showLoading: true,
+      had_buy: 0, //是否买过卡
       banners: [],
       package: '',
       address: '',
@@ -294,6 +288,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
     getUser: function getUser() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _yield$_this3$http$ge, data, code;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
                   _this3.http.get('user/info'));case 2:_yield$_this3$http$ge = _context3.sent;data = _yield$_this3$http$ge.data;code = _yield$_this3$http$ge.code;
                 if (code === 1000) {
+                  _this3.had_buy = data.had_buy;
                   _this3.getUserInfo(data);
                 }case 6:case "end":return _context3.stop();}}}, _callee3);}))();
     },
@@ -304,18 +299,37 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
         target: data.target };
 
     },
+    //打开地图
+    openMap: function openMap() {
+      var latitude = '30.740144';
+      var longitude = '120.796931';
+      uni.openLocation({
+        latitude: latitude,
+        longitude: longitude,
+        success: function success() {
+          console.log('success');
+        } });
+
+    },
+    toBuy: function toBuy() {
+      // if(this.had_buy === 1) return this.$u.toast('您已购买XXX卡，请至个人中心查看优惠信息')
+      this.$u.route('/pages/home/buyCard/buyCard');
+    },
     route: function route(item) {
-      //0的话跳转小程序页面1公众号网页
+      //0的话跳转小程序页面1公众号网页2html
       if (item.target === 0) {
         this.$u.route(item.link);
-      } else {
+      } else if (item.target === 1) {
         this.$u.route("/pages/home/webView/webView?url=".concat(item.link));
+      } else {
+        this.$u.route("/pages/home/html/html?nav_id=".concat(item.id));
       }
 
     },
     changSwipers: function changSwipers(e) {
       this.route(this.banners[e]);
     } }) };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

@@ -6,6 +6,7 @@
     "u-radio": "/uview-ui/components/u-radio/u-radio",
     "u-checkbox-group": "/uview-ui/components/u-checkbox-group/u-checkbox-group",
     "u-checkbox": "/uview-ui/components/u-checkbox/u-checkbox",
+    "u-gap": "/uview-ui/components/u-gap/u-gap",
     "u-button": "/uview-ui/components/u-button/u-button"
   }
 }

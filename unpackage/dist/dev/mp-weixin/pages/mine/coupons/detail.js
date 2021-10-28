@@ -97,6 +97,9 @@ try {
   components = {
     uGap: function() {
       return __webpack_require__.e(/*! import() | uview-ui/components/u-gap/u-gap */ "uview-ui/components/u-gap/u-gap").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-gap/u-gap.vue */ 157))
+    },
+    uButton: function() {
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-button/u-button */ "uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-button/u-button.vue */ 270))
     }
   }
 } catch (e) {
@@ -162,7 +165,12 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var couponsCard = function couponsCard() {__webpack_require__.e(/*! require.ensure | components/coupons-card */ "components/coupons-card").then((function () {return resolve(__webpack_require__(/*! @/components/coupons-card.vue */ 234));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 16));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var couponsCard = function couponsCard() {__webpack_require__.e(/*! require.ensure | components/coupons-card */ "components/coupons-card").then((function () {return resolve(__webpack_require__(/*! @/components/coupons-card.vue */ 234));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
 
 
 
@@ -202,18 +210,28 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
   onLoad: function onLoad(e) {
     this.coupon_id = e.coupon_id;
+    if (e.member_id) {
+      this.member_id = e.member_id;
+      this.showQrcode = false;
+    }
     this.getCouponDetail();
   },
   data: function data() {
     return {
       coupon_id: '',
+      member_id: '',
+      //显示二维码
+      showQrcode: true,
       data: {
         image: "", //图片
         name: "", //优惠卷名称
         store: "", //店铺名称
         notice: "", //使用事项
         qrcode: '' //二维码
-      } };
+      },
+      customStyle: {
+        backgroundColor: "#ED1E79" } };
+
 
   },
   methods: {
@@ -222,7 +240,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
                 if (code === 1000) {
                   _this.data = data;
                 }case 6:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    useCoupon: function useCoupon() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this2$http$ge, code, msg;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.http.get('coupon/useCoupon', {
+                    coupon_id: _this2.coupon_id,
+                    member_id: _this2.member_id }));case 2:_yield$_this2$http$ge = _context2.sent;code = _yield$_this2$http$ge.code;msg = _yield$_this2$http$ge.msg;
+
+                _this2.$u.toast(msg, 3000);
+                if (code === 1000) {
+                  setTimeout(function () {uni.navigateBack({ delta: 1 });}, 2000);
+                }case 7:case "end":return _context2.stop();}}}, _callee2);}))();
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

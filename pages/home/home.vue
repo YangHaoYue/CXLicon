@@ -5,11 +5,11 @@
 			<!-- 顶部轮播图 -->
 			<u-swiper :list="banners" height="589" @click="changSwipers"></u-swiper>
 			<!-- 立即购买 -->
-			<view style="margin: -90rpx 30rpx 0 ;" @click="$u.route('/pages/home/buyCard/buyCard')">
+			<view style="margin: -90rpx 30rpx 0 ;" @click="toBuy">
 				<u-image :src="http.resourceUrl()+package.image" height="168" width="690" mode="aspectFit" />
 			</view>
 			<!-- 地址 -->
-			<view class="u-flex u-m-l-30 u-m-t-40 u-m-b-40">
+			<view class="u-flex u-m-l-30 u-m-t-40 u-m-b-40" @click="openMap">
 				<u-image src="@/static/home/location.png" height="30" mode="heightFix" />
 				<view class="text-gray u-m-l-10 u-font-24">{{address}}</view>
 			</view>
@@ -60,6 +60,7 @@
 		data() {
 			return {
 				showLoading:true,
+				had_buy:0,//是否买过卡
 				banners:[],
 				package:'',
 				address:'',
@@ -117,6 +118,7 @@
 			async getUser(){
 				let {data,code} = await this.http.get('user/info')
 				if(code === 1000){
+					this.had_buy = data.had_buy
 					this.getUserInfo(data)
 				}
 			},
@@ -127,12 +129,30 @@
 					target:data.target
 				}
 			},
+			//打开地图
+			openMap(){
+				const latitude = '30.740144';
+				const longitude = '120.796931';	
+				uni.openLocation({
+					latitude,
+					longitude,
+					success: function () {
+						console.log('success');
+					}
+				});
+			},
+			toBuy(){
+				// if(this.had_buy === 1) return this.$u.toast('您已购买XXX卡，请至个人中心查看优惠信息')
+				this.$u.route('/pages/home/buyCard/buyCard')
+			},
 			route(item){
-				//0的话跳转小程序页面1公众号网页
+				//0的话跳转小程序页面1公众号网页2html
 				if(item.target === 0){
 					this.$u.route(item.link)
-				}else{
+				}else if(item.target === 1){
 					this.$u.route(`/pages/home/webView/webView?url=${item.link}`)
+				}else{
+					this.$u.route(`/pages/home/html/html?nav_id=${item.id}`)
 				}
 				
 			},

@@ -2,11 +2,11 @@
 	<view >
 		<view class="u-flex u-row-center u-p-30" style="flex-direction: column;">
 			<view class="u-flex u-p-l-30 u-p-r-30 u-m-b-20" style="width: 100%;">
-				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 u-text-center">姓名<text style="color: #ED1E79;">*</text></view>
+				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 ">姓名<text style="color: #ED1E79;">*</text></view>
 				<u-input class="u-flex-3" border borderColor="#F01C77" type="text" v-model="name" placeholder="请输入您的姓名" />
 			</view>
 			<view class="u-flex u-p-l-30 u-p-r-30 u-m-b-20" style="width: 100%;">
-				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 u-text-center">性别</view>
+				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 ">性别</view>
 				<u-radio-group class="u-flex-3" v-model="sex" @change="sex = $event">
 					<u-radio 
 						v-for="(item, index) in list" :key="index" 
@@ -18,11 +18,11 @@
 				</u-radio-group>
 			</view>
 			<view class="u-flex u-p-l-30 u-p-r-30 u-m-b-20" style="width: 100%;">
-				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 u-text-center">生日</view>
+				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 ">生日</view>
 				<u-input class="u-flex-3" border borderColor="#F01C77" type="text" disabled v-model="birthday" placeholder="请选择您的生日" @click="showTime = true"/>
 			</view>
 			<view class="u-flex u-p-l-30 u-p-r-30 u-m-b-20" style="width: 100%;">
-				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 u-text-center">地址</view>
+				<view class="u-font-32 text-black text-bold u-m-r-18 u-flex-1 ">地址</view>
 				<u-input class="u-flex-3" border borderColor="#F01C77" v-model="address"  placeholder="请输入您的详细地址"/>
 			</view>
 			<view class="u-font-28 u-m-30" style="color: #ED1E79;">
