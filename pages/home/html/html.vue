@@ -22,7 +22,7 @@
 					nav_id:this.nav_id
 				}).then(res=>{
 					if(res.code === 1000){
-						this.value = res.data
+						this.value = res.data.replace(/\<img/gi,'<img style="width:100% ! important;" ' );
 					}
 				})
 			}

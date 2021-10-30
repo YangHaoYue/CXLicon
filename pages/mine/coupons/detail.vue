@@ -17,7 +17,7 @@
 			</view>
 			<view class="u-flex">
 				<image src="/static/mine/lock.png" mode="widthFix"/>
-				<view class="u-font-26 text-gray u-m-l-10">有效期：{{data.store}}</view>
+				<view class="u-font-26 text-gray u-m-l-10">有效期：{{data.time}}</view>
 			</view>
 			<view class="u-flex u-col-top">
 				<image src="/static/mine/notice.png" mode="widthFix" class="u-m-t-10"/>
@@ -42,6 +42,7 @@
 			couponsCard
 		},
 		onLoad(e) {
+			console.log(e);
 			this.coupon_id = e.coupon_id
 			if(e.member_id){
 				this.member_id = e.member_id
@@ -52,7 +53,7 @@
 		data() {
 			return {
 				coupon_id:'',
-				member_id:'',
+				member_id:0,
 				//显示二维码
 				showQrcode:true,
 				data:{
@@ -69,7 +70,9 @@
 		},
 		methods: {
 			async getCouponDetail(){
-				let {code,data} = await this.http.get('coupon/getCouponDetail',{coupon_id:this.coupon_id})
+				let {code,data} = await this.http.get('coupon/getCouponDetail',{
+					coupon_id:this.coupon_id,
+					member_id:this.member_id})
 				if(code === 1000){
 					this.data = data
 				}
@@ -102,5 +105,12 @@
 			width: 30rpx;
 			
 		}
+	}
+	.bottom-btn{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		padding: 20rpx;
 	}
 </style>

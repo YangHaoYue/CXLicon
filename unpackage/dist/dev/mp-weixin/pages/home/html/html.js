@@ -152,7 +152,7 @@ var _default =
         nav_id: this.nav_id }).
       then(function (res) {
         if (res.code === 1000) {
-          _this.value = res.data;
+          _this.value = res.data.replace(/\<img/gi, '<img style="width:100% ! important;" ');
         }
       });
     } } };exports.default = _default;

@@ -35,7 +35,8 @@
 				}
 			},
 			async pay(){
-				let {data} = await this.http.get('package/pay',{payment_no:this.id})
+				let {code,data,msg} = await this.http.get('package/pay',{payment_no:this.id})
+				if(code != 1000) return this.$u.toast(msg) 
 				wx.requestPayment({
 					timeStamp: data.timestamp,
 					nonceStr:data.nonceStr,

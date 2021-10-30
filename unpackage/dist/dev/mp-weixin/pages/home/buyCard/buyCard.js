@@ -192,8 +192,9 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
                   _this.id = data.id;
                 }case 7:case "end":return _context.stop();}}}, _callee);}))();
     },
-    pay: function pay() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this2$http$ge, data;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
-                  _this2.http.get('package/pay', { payment_no: _this2.id }));case 2:_yield$_this2$http$ge = _context2.sent;data = _yield$_this2$http$ge.data;
+    pay: function pay() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$_this2$http$ge, code, data, msg;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+                  _this2.http.get('package/pay', { payment_no: _this2.id }));case 2:_yield$_this2$http$ge = _context2.sent;code = _yield$_this2$http$ge.code;data = _yield$_this2$http$ge.data;msg = _yield$_this2$http$ge.msg;if (!(
+                code != 1000)) {_context2.next = 8;break;}return _context2.abrupt("return", _this2.$u.toast(msg));case 8:
                 wx.requestPayment({
                   timeStamp: data.timestamp,
                   nonceStr: data.nonceStr,
@@ -210,7 +211,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
                   },
                   fail: function fail(res) {
                     _this2.$u.toast(res.errMsg);
-                  } });case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+                  } });case 9:case "end":return _context2.stop();}}}, _callee2);}))();
 
     },
     getUser: function getUser() {var _this3 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _yield$_this3$http$ge, data, code;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
