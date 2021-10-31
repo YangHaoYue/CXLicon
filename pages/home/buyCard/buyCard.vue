@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<view v-html="data"></view>
+		<u-parse :html="data"></u-parse>
 		<u-gap height="120" />
-		<view class="bottom-btn">
+		<view class="bottom-btn bg-white">
 			<u-button :custom-style="customStyle" type="error" shape="circle" @click="pay">立即购买</u-button>
 		</view>
 	</view>
@@ -30,8 +30,8 @@
 			async getDetail(){
 				let {code,data,msg} = await this.http.get('package/getDetail')
 				if(code === 1000){
-					this.data = data.content.replace(/\<img/gi,'<img style="width:100% ! important;" ' );
-					this.id = data.id
+					this.data = data.content;
+					this.id = data.id;
 				}
 			},
 			async pay(){

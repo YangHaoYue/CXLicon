@@ -9,7 +9,7 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));
 var _buyCard = _interopRequireDefault(__webpack_require__(/*! ./pages/home/buyCard/buyCard.vue */ 108));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_buyCard.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
@@ -95,6 +95,9 @@ __webpack_require__.r(__webpack_exports__);
 var components
 try {
   components = {
+    uParse: function() {
+      return Promise.all(/*! import() | uview-ui/components/u-parse/u-parse */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-parse/u-parse")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-parse/u-parse.vue */ 360))
+    },
     uGap: function() {
       return __webpack_require__.e(/*! import() | uview-ui/components/u-gap/u-gap */ "uview-ui/components/u-gap/u-gap").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-gap/u-gap.vue */ 163))
     },
@@ -188,7 +191,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
     getDetail: function getDetail() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$http$get, code, data, msg;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   _this.http.get('package/getDetail'));case 2:_yield$_this$http$get = _context.sent;code = _yield$_this$http$get.code;data = _yield$_this$http$get.data;msg = _yield$_this$http$get.msg;
                 if (code === 1000) {
-                  _this.data = data.content.replace(/\<img/gi, '<img style="width:100% ! important;" ');
+                  _this.data = data.content;
                   _this.id = data.id;
                 }case 7:case "end":return _context.stop();}}}, _callee);}))();
     },
