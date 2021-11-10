@@ -1,7 +1,9 @@
 <template>
 	<view class="u-p-30">
+		<!-- 顶部轮播图 -->
+		<u-swiper :list="banners"  img-mode="widthFix"></u-swiper>
 		<view class="u-m-b-20 u-font-38 text-black text-bold">
-			<view class="u-text-center">{{title}}</view>
+			<!-- <view class="u-text-center">{{title}}</view> -->
 			<view>{{desc}}</view>
 		</view>
 		<block v-for="(item,index) in questionList" :key="item.id">
@@ -37,6 +39,7 @@
 		},
 		data() {
 			return {
+				banners:'',
 				title:'',
 				desc:'',
 				questionList:[],
@@ -52,10 +55,15 @@
 			}
 		},
 		methods: {
+			__format(data){
+				return{
+					image:data?this.http.resourceUrl()+data:''}
+			},
 			async getQuestions(){
 				let {code,data} = await this.http.get('index/getQuestionnaireList')
 				this.title = data.title;
 				this.desc = data.desc;
+				this.banners = [this.__format(data.banner)]
 				this.questionList = data.items.map(v=>{
 					//问题类型0单选1多选2文本框
 					if(v.type === 1){

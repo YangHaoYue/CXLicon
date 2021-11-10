@@ -9,7 +9,7 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));
 var _index = _interopRequireDefault(__webpack_require__(/*! ./pages/center/index.vue */ 62));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 createPage(_index.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uLink: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-link/u-link */ "uview-ui/components/u-link/u-link").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-link/u-link.vue */ 206))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-link/u-link */ "uview-ui/components/u-link/u-link").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-link/u-link.vue */ 212))
     }
   }
 } catch (e) {

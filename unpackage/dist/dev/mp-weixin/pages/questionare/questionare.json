@@ -2,6 +2,7 @@
   "navigationBarTitleText": "调查问卷",
   "enablePullDownRefresh": false,
   "usingComponents": {
+    "u-swiper": "/uview-ui/components/u-swiper/u-swiper",
     "u-radio-group": "/uview-ui/components/u-radio-group/u-radio-group",
     "u-radio": "/uview-ui/components/u-radio/u-radio",
     "u-checkbox-group": "/uview-ui/components/u-checkbox-group/u-checkbox-group",
