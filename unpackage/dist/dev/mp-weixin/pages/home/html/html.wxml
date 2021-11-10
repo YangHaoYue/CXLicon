@@ -1,1 +1,1 @@
-<view><view><rich-text nodes="{{value}}"></rich-text></view></view>
+<view><u-parse vue-id="98e92f24-1" html="{{value}}" bind:__l="__l"></u-parse></view>

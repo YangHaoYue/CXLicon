@@ -36,7 +36,7 @@
 				<u-cell-item  title="扫码核销" @click="scancode">
 					<u-icon class="u-m-r-10" slot="icon" size="32" name="scan"></u-icon>
 				</u-cell-item>
-				<u-cell-item  title="我的订单" @click="$u.route('/pages/mine/coupons/coupons')">
+				<u-cell-item  title="我的订单" @click="$u.route('/pages/mine/cardRecord/cardRecord')">
 					<u-icon class="u-m-r-10" slot="icon" size="32" name="file-text"></u-icon>
 				</u-cell-item>
 				<u-cell-item icon="phone" title="联系客服" @click="showModal = true"></u-cell-item>
@@ -73,6 +73,9 @@
 				this.islogin = true
 				this.login();
 			}
+		},
+		onShow() {
+			this.getUser()
 		},
 		computed: {
 			...mapState({

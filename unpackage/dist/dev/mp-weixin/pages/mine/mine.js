@@ -160,7 +160,7 @@ var render = function() {
     }
 
     _vm.e3 = function($event) {
-      return _vm.$u.route("/pages/mine/coupons/coupons")
+      return _vm.$u.route("/pages/mine/cardRecord/cardRecord")
     }
 
     _vm.e4 = function($event) {
@@ -288,6 +288,9 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
       this.islogin = true;
       this.login();
     }
+  },
+  onShow: function onShow() {
+    this.getUser();
   },
   computed: _objectSpread({},
   (0, _vuex.mapState)({

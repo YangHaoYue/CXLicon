@@ -16,4 +16,11 @@
 .detail image.data-v-48ae5266 {
   width: 30rpx;
 }
+.bottom-btn.data-v-48ae5266 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  padding: 20rpx;
+}
 

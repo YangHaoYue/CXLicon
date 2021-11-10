@@ -209,6 +209,7 @@ __webpack_require__.r(__webpack_exports__);
     couponsCard: couponsCard },
 
   onLoad: function onLoad(e) {
+    console.log(e);
     this.coupon_id = e.coupon_id;
     if (e.member_id) {
       this.member_id = e.member_id;
@@ -219,7 +220,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       coupon_id: '',
-      member_id: '',
+      member_id: 0,
       //显示二维码
       showQrcode: true,
       data: {
@@ -236,7 +237,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getCouponDetail: function getCouponDetail() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$_this$http$get, code, data;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  _this.http.get('coupon/getCouponDetail', { coupon_id: _this.coupon_id }));case 2:_yield$_this$http$get = _context.sent;code = _yield$_this$http$get.code;data = _yield$_this$http$get.data;
+                  _this.http.get('coupon/getCouponDetail', {
+                    coupon_id: _this.coupon_id,
+                    member_id: _this.member_id }));case 2:_yield$_this$http$get = _context.sent;code = _yield$_this$http$get.code;data = _yield$_this$http$get.data;
                 if (code === 1000) {
                   _this.data = data;
                 }case 6:case "end":return _context.stop();}}}, _callee);}))();
