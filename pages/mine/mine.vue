@@ -33,7 +33,7 @@
 			</view>
 			
 			<u-cell-group>
-				<u-cell-item  title="扫码核销" @click="scancode">
+				<u-cell-item  title="扫码核销" @click="scancode" v-show="show_scan">
 					<u-icon class="u-m-r-10" slot="icon" size="32" name="scan"></u-icon>
 				</u-cell-item>
 				<u-cell-item  title="我的订单" @click="$u.route('/pages/mine/cardRecord/cardRecord')">
@@ -75,7 +75,9 @@
 			}
 		},
 		onShow() {
-			this.getUser()
+			if(this.http.isLogin()){
+				this.getUser()
+			}
 		},
 		computed: {
 			...mapState({

@@ -10,7 +10,7 @@
 			if(!e.url){
 				this.url = this.$store.state.tabbars.iconUrl
 			}else{
-				this.url = e.url
+				this.url = JSON.parse(decodeURIComponent(e.url))
 			}
 		},
 		data() {

@@ -150,7 +150,7 @@
 				if(item.target === 0){
 					this.$u.route(item.link)
 				}else if(item.target === 1){
-					this.$u.route(`/pages/home/webView/webView?url=${item.link}`)
+					this.$u.route(`/pages/home/webView/webView?url=${encodeURIComponent(JSON.stringify(item.link))}`)
 				}else{
 					this.$u.route(`/pages/home/html/html?nav_id=${item.id}`)
 				}
