@@ -31,7 +31,7 @@
             "path" : "pages/mine/coupons/coupons",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "我的优惠卷",
+                "navigationBarTitleText": "我的优惠券",
                 "enablePullDownRefresh": false
             }
             
@@ -40,7 +40,7 @@
             "path" : "pages/mine/coupons/detail",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "优惠卷详情",
+                "navigationBarTitleText": "优惠券详情",
                 "enablePullDownRefresh": false
             }
             

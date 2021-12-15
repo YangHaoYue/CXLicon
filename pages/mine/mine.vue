@@ -21,7 +21,7 @@
 				<u-image src="@/static/mine/records.png" width="730" mode="widthFix"
 					@click="$u.route('/pages/mine/cardRecord/cardRecord')" />
 			</view>
-			<!-- 我的优惠卷 -->
+			<!-- 我的优惠券 -->
 			<view class="card u-flex u-row-between bg-white" @click="$u.route('/pages/mine/coupons/coupons')">
 				<view class="u-flex">
 					<u-image src="@/static/mine/Coupons.png" width="58" height="47" />
@@ -51,8 +51,8 @@
 			<u-popup v-model="showModal" mode="center" border-radius="15" width="600" height="600" mask-close-able>
 				<view class="u-flex u-text-center u-p-t-40" style="flex-direction: column;height: 100%;">
 					<u-image src="@/static/server.png" width="175" mode="widthFix" style="margin: 60rpx;"/>
-					<view class="u-m-t-20 u-m-b-10 u-font-28">客户热线：{{service_tel}}</view>
-					<view class="u-m-t-10 u-m-b-20 u-font-28">客户微信：{{service_wx}}</view>
+					<view class="u-m-t-20 u-m-b-10 u-font-28">客服热线：{{service_tel}}</view>
+					<view class="u-m-t-10 u-m-b-20 u-font-28">客服微信：{{service_wx}}</view>
 				</view>
 				<view class="u-flex u-row-center" style="position: fixed;bottom: 150rpx;width: 600rpx;" @click="showModal = false">
 					<u-icon name="close-circle" size="50" color="#fff"/>

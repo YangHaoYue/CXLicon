@@ -2,9 +2,9 @@
 	<view class="u-p-30">
 		<!-- 顶部轮播图 -->
 		<u-swiper :list="banners"  img-mode="widthFix"></u-swiper>
-		<view class="u-m-b-20 u-font-38 text-black text-bold">
+		<view class="u-m-b-20 u-font-38 text-black text-bold u-m-t-30">
 			<!-- <view class="u-text-center">{{title}}</view> -->
-			<view>{{desc}}</view>
+			<view class="u-font-28">{{desc}}</view>
 		</view>
 		<block v-for="(item,index) in questionList" :key="item.id">
 			<view class=" u-m-t-20">

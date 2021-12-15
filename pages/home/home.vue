@@ -112,7 +112,7 @@
 			async getMineMenu(){
 				let {code,data,msg} = await this.http.get('user/getMenu')
 				if(code != 1000) return this.$u.toast(msg)
-				this.getUser()
+				if(this.http.isLogin()) this.getUser()
 				this.getMenu(data)
 			},
 			async getUser(){

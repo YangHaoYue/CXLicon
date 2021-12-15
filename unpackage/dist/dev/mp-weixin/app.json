@@ -1,52 +1,51 @@
 {
-    "pages": [
-        "pages/home/home",
-        "pages/mine/mine",
-        "pages/center/index",
-        "pages/mine/coupons/coupons",
-        "pages/mine/coupons/detail",
-        "pages/questionare/questionare",
-        "pages/mine/setting/setting",
-        "pages/mine/cardRecord/cardRecord",
-        "pages/home/buyCard/buyCard",
-        "pages/home/webView/webView",
-        "pages/home/cooperate/cooperate",
-        "pages/home/html/html"
-    ],
-    "subPackages": [],
-    "window": {
-        "navigationBarTextStyle": "black",
-        "navigationBarTitleText": "uView",
-        "navigationBarBackgroundColor": "#FFFFFF",
-        "backgroundColor": "#F8F8F8"
-    },
-    "tabBar": {
-        "color": "#909399",
-        "selectedColor": "#303133",
-        "borderStyle": "black",
-        "backgroundColor": "#ffffff",
-        "list": [
-            {
-                "pagePath": "pages/home/home",
-                "iconPath": "static/index.png",
-                "selectedIconPath": "static/index-selected.png",
-                "text": "首页"
-            },
-            {
-                "pagePath": "pages/mine/mine",
-                "iconPath": "static/center.png",
-                "selectedIconPath": "static/center-selected.png",
-                "text": "我"
-            }
-        ]
-    },
-    "permission": {
-        "scope.userLocation": {
-            "desc": "方便计算距离"
-        }
-    },
-    "usingComponents": {
-        "icon-loading": "/components/icon-loading"
-    },
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/home/home",
+    "pages/mine/mine",
+    "pages/center/index",
+    "pages/mine/coupons/coupons",
+    "pages/mine/coupons/detail",
+    "pages/questionare/questionare",
+    "pages/mine/setting/setting",
+    "pages/mine/cardRecord/cardRecord",
+    "pages/home/buyCard/buyCard",
+    "pages/home/webView/webView",
+    "pages/home/cooperate/cooperate",
+    "pages/home/html/html"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uView",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#909399",
+    "selectedColor": "#303133",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/index.png",
+        "selectedIconPath": "static/index-selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "static/center.png",
+        "selectedIconPath": "static/center-selected.png",
+        "text": "我"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "方便计算距离"
+    }
+  },
+  "usingComponents": {
+    "icon-loading": "/components/icon-loading"
+  }
 }

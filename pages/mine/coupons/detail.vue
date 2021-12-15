@@ -58,7 +58,7 @@
 				showQrcode:true,
 				data:{
 					image: "", //图片
-					name: "", //优惠卷名称
+					name: "", //优惠券名称
 					store: "", //店铺名称
 					notice: "" ,//使用事项
 					qrcode:''//二维码
